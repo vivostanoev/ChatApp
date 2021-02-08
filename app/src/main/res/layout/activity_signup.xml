@@ -8,13 +8,14 @@
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/ivProfile"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="32dp"
+        android:scrollbarSize="4dp"
+        android:src="@drawable/profil_users"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/profil_users" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
