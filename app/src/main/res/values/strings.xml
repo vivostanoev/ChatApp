@@ -7,4 +7,10 @@
     <string name="enter_name">Enter Name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="signup">Sign Up</string>
+    <string name="enter_correct_email">Enter Valid Email Address</string>
+    <string name="password_missmatch">Password Missmatch</string>
+    <string name="user_created">User created successfully</string>
+    <string name="signup_failed">Sign Up Failed : %1$s</string>
+    <string name="donthave_account">Don`t have account : </string>
+    <string name="failed_to_update_profile">Failed to update : %1$s</string>
 </resources>
