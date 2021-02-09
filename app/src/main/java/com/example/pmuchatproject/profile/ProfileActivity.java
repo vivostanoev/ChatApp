@@ -69,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (firebaseUser != null)
         {
             etName.setText(firebaseUser.getDisplayName());
-            etName.setText(firebaseUser.getEmail());
+            etEmail.setText(firebaseUser.getEmail());
             serverFileUri = firebaseUser.getPhotoUrl();
 
             if (serverFileUri!= null)
@@ -116,8 +116,7 @@ public class ProfileActivity extends AppCompatActivity {
                                         databaseReference.child(userId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(ProfileActivity.this, R.string.user_created, Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+                                                finish();
                                             }
                                         });
                                     }
@@ -189,8 +188,7 @@ public class ProfileActivity extends AppCompatActivity {
                     databaseReference.child(userId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(ProfileActivity.this, R.string.user_created, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+                            finish();
                         }
                     });
                 }
@@ -205,7 +203,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void changeImage(View v)
     {
-        if (serverFileUri != null)
+        if (serverFileUri == null)
         {
             pickImage();
         }
@@ -231,6 +229,8 @@ public class ProfileActivity extends AppCompatActivity {
                     return false;
                 }
             });
+
+            popupMenu.show();
         }
     }
 
