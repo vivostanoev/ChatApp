@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".login.LoginActivity">
 
+    <include
+        layout="@layout/custom_progressbar"
+        android:id="@+id/progressBar"
+        android:visibility="gone" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="120dp"
@@ -14,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_chat" />
+        app:srcCompat="@drawable/ic_chat"
+        tools:ignore="VectorDrawableCompat" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

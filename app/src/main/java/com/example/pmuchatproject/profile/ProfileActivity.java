@@ -72,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
             etEmail.setText(firebaseUser.getEmail());
             serverFileUri = firebaseUser.getPhotoUrl();
 
-            if (serverFileUri!= null)
+            if (serverFileUri != null)
             {
                 Glide.with(this).load(serverFileUri).placeholder(R.drawable.profil_users).error(R.drawable.profil_users).into(ivProfile);
             }

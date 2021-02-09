@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText etEmail, etPassword;
     private String email, password;
+    private View progressBar;
+
 
 
 
@@ -33,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
+
+        progressBar = findViewById(R.id.progressBar);
     }
 
 
@@ -56,10 +60,12 @@ public class LoginActivity extends AppCompatActivity {
         }
         else
         {
+            progressBar.setVisibility(View.VISIBLE);
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
             firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful())
                     {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
