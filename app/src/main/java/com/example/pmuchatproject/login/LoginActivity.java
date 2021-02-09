@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.pmuchatproject.MainActivity;
 import com.example.pmuchatproject.R;
 import com.example.pmuchatproject.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -61,7 +62,8 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful())
                     {
-                        //later
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     }
                     else
                     {
