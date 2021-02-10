@@ -18,6 +18,14 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/ic_launcher_background"
+            app:tabIndicatorColor="@android:color/white" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,4 +21,12 @@
     <string name="photo_removed_successfully">Photo is removed successfully</string>
     <string name="profile">Profile</string>
     <string name="loading">Loading...</string>
+    <string name="chat">Chat</string>
+    <string name="request">Request</string>
+    <string name="find">Find</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_chat_list">Chat list will apear here</string>
+    <string name="empty_friends_list">Friends list will apear here</string>
+    <string name="empty_requests_list">Friends Requests will apear here</string>
 </resources>
