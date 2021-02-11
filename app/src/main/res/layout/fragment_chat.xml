@@ -30,6 +30,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/empty_chat_list"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColorLink="#EDE7E7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
