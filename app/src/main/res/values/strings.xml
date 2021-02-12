@@ -31,4 +31,5 @@
     <string name="empty_requests_list">Friends Requests will apear here</string>
     <string name="send_friend_request">Send Friend Request</string>
     <string name="cancel_friend_request">Cancel Request</string>
+    <string name="failed_to_fetch_friends">Failed to fetch friends</string>
 </resources>

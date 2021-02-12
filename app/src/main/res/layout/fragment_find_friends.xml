@@ -6,6 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".findfriends.FindFriendsFragment">
 
+    <include
+        layout="@layout/custom_progressbar"
+        android:visibility="gone"
+        android:id="@id/progressBar"
+        />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFindFriends"
         android:layout_width="0dp"
