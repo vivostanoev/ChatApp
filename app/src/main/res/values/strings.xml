@@ -29,4 +29,6 @@
     <string name="empty_chat_list">Chat list will apear here</string>
     <string name="empty_friends_list">Friends list will apear here</string>
     <string name="empty_requests_list">Friends Requests will apear here</string>
+    <string name="send_friend_request">Send Friend Request</string>
+    <string name="cancel_friend_request">Cancel Request</string>
 </resources>
