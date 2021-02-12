@@ -17,7 +17,7 @@ public class FindFriendAdapter extends RecyclerView.Adapter<FindFriendAdapter.Fi
     @NonNull
     @Override
     public FindFriendAdapter.FindFriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+        return null;
     }
 
     @Override
