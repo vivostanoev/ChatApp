@@ -12,7 +12,6 @@
         android:id="@id/progressBar"
         />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFindFriends"
         android:layout_width="0dp"

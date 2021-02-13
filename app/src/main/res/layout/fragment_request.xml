@@ -6,11 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".friendRequest.RequestFragment">
 
-    <include
-        android:id="progressBar"
-        android:visibility="gone"
-        layout= "@layout/custom_progressbar"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRequests"
         android:layout_width="0dp"

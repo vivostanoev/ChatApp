@@ -22,7 +22,7 @@ public class FindFriendModel {
     }
 
     public String getPhotoName() {
-        return photoName;
+        return userId + ".jpg";
     }
 
     public void setPhotoName(String photoName) {
