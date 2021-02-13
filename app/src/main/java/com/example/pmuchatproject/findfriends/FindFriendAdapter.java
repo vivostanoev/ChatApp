@@ -80,6 +80,45 @@ public class FindFriendAdapter extends RecyclerView.Adapter<FindFriendAdapter.Fi
             holder.btnCancelRequest.setVisibility(View.GONE);
         }
 
+        holder.btnCancelRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.btnCancelRequest.setVisibility(View.GONE);
+
+                holder.progressBar.setVisibility(View.VISIBLE);
+
+                userId = findFriendModel.getUserId();
+
+                friendRequestDatabase.child(currentUser.getUid()).child(userId).child(NodeNames.REQUEST_TYPE).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            friendRequestDatabase.child(userId).child(currentUser.getUid()).child(NodeNames.REQUEST_TYPE).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(context,R.string.request_cancel_successfully, Toast.LENGTH_SHORT).show();
+                                        holder.btnSendRequest.setVisibility(View.VISIBLE);
+                                        holder.progressBar.setVisibility(View.GONE);
+                                        holder.btnCancelRequest.setVisibility(View.GONE);
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(context, context.getString(R.string.request_cancel_failed, task.getException()), Toast.LENGTH_SHORT).show();
+                                        holder.btnSendRequest.setVisibility(View.GONE);
+                                        holder.progressBar.setVisibility(View.GONE);
+                                        holder.btnCancelRequest.setVisibility(View.VISIBLE);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
         holder.btnSendRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +157,8 @@ public class FindFriendAdapter extends RecyclerView.Adapter<FindFriendAdapter.Fi
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {
