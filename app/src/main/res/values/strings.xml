@@ -32,4 +32,6 @@
     <string name="send_friend_request">Send Friend Request</string>
     <string name="cancel_friend_request">Cancel Request</string>
     <string name="failed_to_fetch_friends">Failed to fetch friends</string>
+    <string name="request_sent_successfully">Request sent successfully</string>
+    <string name="request_sent_failed">Failed to sent a request : %1$s</string>
 </resources>

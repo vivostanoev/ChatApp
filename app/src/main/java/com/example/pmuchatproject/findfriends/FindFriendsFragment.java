@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pmuchatproject.R;
+import com.example.pmuchatproject.commons.Constant;
 import com.example.pmuchatproject.commons.NodeNames;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +39,7 @@ public class FindFriendsFragment extends Fragment {
     private List<FindFriendModel> findFriendModelList;
     private TextView tvEmptyFrinedsList;
 
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, databaseReferenceFriendRequest;
     private FirebaseUser currentUser;
     private View progressBar;
 
@@ -69,9 +70,11 @@ public class FindFriendsFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference().child(NodeNames.USERS);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        databaseReferenceFriendRequest = FirebaseDatabase.getInstance().getReference().child(NodeNames.FRIEND_REQUEST).child(currentUser.getUid());
+
         tvEmptyFrinedsList.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.VISIBLE);
-        Query query = databaseReference.orderByChild(NodeNames.USERS);
+        Query query = databaseReference.orderByChild(NodeNames.NAME);
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -80,20 +83,43 @@ public class FindFriendsFragment extends Fragment {
 
                 for (DataSnapshot ds : snapshot.getChildren())
                 {
-                    String userId = ds.getKey();
+                    final String userId = ds.getKey();
 
                     if (userId.equals(currentUser.getUid()))
                     {
-                        return;
+                        continue;
                     }
 
                     if (ds.child(NodeNames.NAME).getValue() != null)
                     {
-                        String fullName = ds.child(NodeNames.NAME).getValue().toString();
-                        String photo = ds.child(NodeNames.PHOTO).getValue().toString();
+                        final String fullName = ds.child(NodeNames.NAME).getValue().toString();
+                        final String photo = ds.child(NodeNames.PHOTO).getValue().toString();
 
-                        findFriendModelList.add(new FindFriendModel(fullName, photo, userId, false));
-                        findFriendAdapter.notifyDataSetChanged();
+                        databaseReferenceFriendRequest.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists())
+                                {
+                                    String requestType = snapshot.child(NodeNames.REQUEST_TYPE).getValue().toString();
+
+                                    if (requestType.equals(Constant.REQUEST_DATA_SENT))
+                                    {
+                                        findFriendModelList.add(new FindFriendModel(fullName, photo, userId, true));
+                                        findFriendAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                else
+                                {
+                                    findFriendModelList.add(new FindFriendModel(fullName, photo, userId, false));
+                                    findFriendAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
 
                         tvEmptyFrinedsList.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
