@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.pmuchatproject.findfriends.FindFriendsFragment;
+import com.example.pmuchatproject.friendRequest.RequestFragment;
 import com.example.pmuchatproject.profile.ProfileActivity;
 import com.google.android.material.tabs.TabLayout;
 
