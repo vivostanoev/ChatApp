@@ -36,4 +36,6 @@
     <string name="request_sent_failed">Failed to sent a request : %1$s</string>
     <string name="request_cancel_successfully">Cancel Request Successful</string>
     <string name="request_cancel_failed">Failed to cancel the request : %1$s</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
 </resources>
