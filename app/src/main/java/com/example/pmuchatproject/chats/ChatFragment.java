@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.pmuchatproject.R;
 import com.example.pmuchatproject.commons.NodeNames;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -74,14 +75,16 @@ public class ChatFragment extends Fragment {
 
         databaseReferenceUsers = FirebaseDatabase.getInstance().getReference().child(NodeNames.USERS);
         databaseReferenceChats = FirebaseDatabase.getInstance().getReference().child(NodeNames.CHATS);
-
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         query = databaseReferenceChats.orderByChild(NodeNames.TIME_STAMP);
 
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                updateList(snapshot, true, snapshot.getKey());
+                if (currentUser.getUid().equals(snapshot.getKey())) {
+                    updateList(snapshot, true, snapshot.getKey());
+                }
             }
 
             @Override
