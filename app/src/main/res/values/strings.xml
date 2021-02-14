@@ -39,4 +39,6 @@
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
     <string name="failed_fetch_friend_request">Failed to fetch friend request : %1$s</string>
+    <string name="failed_decline_request">Failed to Decline request : %1$s</string>
+    <string name="failed_accepted_request">Failed to accepted request : %1$s</string>
 </resources>
