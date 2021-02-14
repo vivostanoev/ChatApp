@@ -1,6 +1,7 @@
 package com.example.pmuchatproject.chats;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.pmuchatproject.ChatActivity;
 import com.example.pmuchatproject.R;
 import com.example.pmuchatproject.commons.Constant;
+import com.example.pmuchatproject.commons.Extras;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -41,7 +44,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
     @Override
     public void onBindViewHolder(@NonNull final ChatListViewHolder holder, int position) {
 
-        ChatListModel chatListModel = chatListModelList.get(position);
+        final ChatListModel chatListModel = chatListModelList.get(position);
 
         holder.tvFullName.setText(chatListModel.getUsername());
 
@@ -54,7 +57,14 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
             }
         });
 
-
+        holder.llChatList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChatActivity.class);
+                intent.putExtra(Extras.USER_KEY, chatListModel.getUserId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

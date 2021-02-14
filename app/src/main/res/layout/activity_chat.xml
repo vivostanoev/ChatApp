@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@android:color/white"
+        android:background="@color/white1"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
 
         <EditText
             android:id="@+id/etMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
@@ -37,7 +37,6 @@
             android:id="@+id/ivAttachment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="TODO"
             android:padding="8dp"
             android:tint="@color/ic_launcher_background"
             app:srcCompat="@drawable/ic_baseline_attachment_24" />

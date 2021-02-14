@@ -42,5 +42,7 @@
     <string name="failed_decline_request">Failed to Decline request : %1$s</string>
     <string name="failed_accepted_request">Failed to accepted request : %1$s</string>
     <string name="failed_to_fetch_chat_list">Failed to fetch chat list : %1$s</string>
-    <string name="enter_message">Enter Message</string>
+    <string name="failed_to_send_message">Failed to send message : %1$s</string>
+    <string name="message_send_successful">Message sent successfully</string>
+    <string name="no_internet">No internet</string>
 </resources>

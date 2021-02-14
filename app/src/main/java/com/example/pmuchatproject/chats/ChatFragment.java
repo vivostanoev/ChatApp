@@ -74,7 +74,8 @@ public class ChatFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
 
         databaseReferenceUsers = FirebaseDatabase.getInstance().getReference().child(NodeNames.USERS);
-        databaseReferenceChats = FirebaseDatabase.getInstance().getReference().child(NodeNames.CHATS);
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReferenceChats = FirebaseDatabase.getInstance().getReference().child(NodeNames.CHATS).child(currentUser.getUid());
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         query = databaseReferenceChats.orderByChild(NodeNames.TIME_STAMP);
@@ -82,9 +83,7 @@ public class ChatFragment extends Fragment {
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if (currentUser.getUid().equals(snapshot.getKey())) {
                     updateList(snapshot, true, snapshot.getKey());
-                }
             }
 
             @Override
