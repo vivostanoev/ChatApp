@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.pmuchatproject.ChatActivity;
 import com.example.pmuchatproject.R;
 import com.example.pmuchatproject.commons.Constant;
 import com.example.pmuchatproject.commons.Extras;
