@@ -7,4 +7,8 @@
     <item
         android:id="@+id/mmuRemovePic"
         android:title="@string/remove_picture" />
+
+    <item
+        android:id="@+id/mmuTakePic"
+        android:title="@string/take_picture" />
 </menu>
